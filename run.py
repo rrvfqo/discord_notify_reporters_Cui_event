@@ -1,13 +1,14 @@
 
 import sys
 import requests
+import os
 
 from get_reporters_Cui_news import check_news  # 匯入函式
 
 
 
 def notify_discord_Cui_webhook(msg):
-    url = 'https://discord.com/api/webhooks/1477174423277801613/OnnE_kULf8a16p4V6Kqz7NVU7xaZm3--TiUhlMoIvvAsa6jeScz0s5YXXz7D_qdE5i52'
+    url = os.getenv('DISCORD_WEBHOOK_URL')
     headers = {"Content-Type": "application/json"}
     data = {"content": msg, "username": "新聞通知"}
     res = requests.post(url, headers = headers, json = data) 
